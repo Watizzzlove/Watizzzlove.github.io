@@ -1,0 +1,15 @@
+```css
+.construction-gradient {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+}
+
+.btn-orange {
+    background-color: #f97316;
+    transition: all 0.3s ease;
+}
+
+.btn-orange:hover {
+    background-color: #ea580c;
+    transform: translateY(-2px);
+}
+```

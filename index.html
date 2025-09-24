@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Строительный портал - Регистрация продавцов</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .construction-gradient {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+        }
+        .btn-orange {
+            background-color: #f97316;
+            transition: all 0.3s ease;
+        }
+        .btn-orange:hover {
+            background-color: #ea580c;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <div class="construction-gradient min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="max-w-6xl mx-auto">
+            <div class="bg-white rounded-xl shadow-xl overflow-hidden md:flex">
+                <!-- Image Section -->
+                <div class="md:w-1/2 relative">
+                    <img src="http://static.photos/construction/1200x630/10" alt="Строительные материалы" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                    </div>
+                </div>
+                
+                <!-- Form Section -->
+                <div class="md:w-1/2 p-8 md:p-12">
+                    <div class="flex items-center mb-6">
+                        <i data-feather="tool" class="text-orange-500 mr-3"></i>
+                        <h3 class="text-2xl font-bold text-gray-800">Для поставщиков строительных материалов</h3>
+                    </div>
+                    
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Присоединяйтесь к крупнейшей строительной площадке и получите доступ к тысячам покупателей. 
+                        Размещайте свои товары, управляйте заказами и увеличивайте продажи.
+                    </p>
+                    
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Быстрая регистрация и простое управление</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Широкая аудитория строительных компаний</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i data-feather="check-circle" class="text-green-500 mt-1 mr-3"></i>
+                            <span class="text-gray-700">Гибкие условия сотрудничества</span>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="button" class="btn-orange py-4 px-8 rounded-lg text-white font-semibold shadow-md hover:shadow-lg text-lg">
+                            Зарегистрироваться как продавец
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="mt-8 text-center text-gray-600">
+                <p>Уже зарегистрированы? <a href="#" class="text-orange-500 font-medium hover:underline">Войти в личный кабинет</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        AOS.init();
+        feather.replace();
+    </script>
+</body>
+</html>
