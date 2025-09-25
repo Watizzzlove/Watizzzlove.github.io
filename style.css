@@ -1,15 +1,201 @@
-```css
-.construction-gradient {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+/* Базовые настройки: учитываем границы в расчёте размеров */
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.btn-orange {
-    background-color: #f97316;
-    transition: all 0.3s ease;
+/* Глобальные стили страницы */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f9fafb;
+  margin: 0;
+  padding: 0;
+  color: #1a202c; /* тёмно-серый текст */
+
 }
 
-.btn-orange:hover {
-    background-color: #ea580c;
-    transform: translateY(-2px);
+/* Секция, в которой расположена карточка */
+.hero-section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-left: 16px;
+  padding-right: 16px;
 }
-```
+
+/* На очень маленьких экранах уменьшаем отступы у hero-section */
+@media (max-width: 480px) {
+  .hero-section {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+}
+
+/* Ограничение общей ширины контента страницы */
+.container {
+  max-width: 1400px; /* форма масштабируется максимум до 1400px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Карточка формы: фон, скругление, тень и отсечение переполнения */
+.form-card {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
+/* Сетка карточки: на мобиле контент сверху, изображение снизу */
+.grid {
+  display: grid;
+  gap: 10%;
+  align-items: stretch;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "content"
+    "image";
+}
+
+/* На ≥768px два столбца: слева картинка, справа контент, между ними 10% */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: 45% 45%;
+    grid-template-areas: "image content";
+  }
+}
+
+/* Общий стиль для одиночных изображений (если используются отдельно) */
+.image img, .image_left img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Блок с левой картинкой: прижимаем содержимое к низу, слева; высота подстраивается под картинку */
+.imageleft {
+  width: 100%;
+  grid-area: image;
+  display: flex;
+  align-items: flex-end; /* прижать по вертикали вниз */
+  justify-content: flex-start; /* прижать по горизонтали влево */
+  align-self: end; /* сам контейнер прижат к низу строки грида */
+}
+
+/* Картинка bg3: сохраняет пропорции, прижата к левому нижнему краю,
+   при нехватке ширины уменьшается и по высоте */
+.imageleft img {
+  display: block;
+  width: auto;          /* соблюдаем пропорции */
+  height: auto;         /* высота следует из ширины */
+  max-width: 100%;      /* не шире колонки */
+  max-height: 100%;     /* не выше родителя на десктопе */
+  object-fit: contain;  /* сохраняем пропорции внутри области */
+  object-position: left bottom; /* якорь слева-снизу */
+  align-self: flex-end; /* дополнительно фиксируем к низу */
+}
+
+/* Правый блок: логотип, текст и кнопка. Отступ не даёт касаться изображения */
+.content {
+  padding: 32px;
+  display: flex;           /* равные вертикальные интервалы */
+  flex-direction: column;
+  gap: 24px;               /* одинаковые отступы между лого, текстом и кнопкой */
+  grid-area: content;
+}
+
+/* Логотип/иконка над текстом: увеличен до ~220px и отзывчив */
+.logo img {
+  width: 220px; /* было 120px */
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .content {
+    padding: 48px;
+    gap: 24px;            /* поддерживаем равные интервалы на десктопе */
+  }
+  .logo img {
+    width: 220px; /* держим около 220px на десктопе */
+  }
+}
+
+/* На мобильных карточка не растягивается на всю ширину экрана */
+@media (max-width: 767.98px) {
+  .form-card {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  /* На мобильных картинка всегда помещается полностью без обрезки */
+  .imageleft img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: none;   /* не ограничиваем по высоте, чтобы не резать */
+    object-fit: contain;
+    object-position: left bottom;
+  }
+  /* Уменьшаем вертикальные интервалы внутри контента на мобильных */
+  .content {
+    gap: 12px;
+  }
+}
+
+/* Заголовок (если используется) */
+.content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 768px) {
+  .content h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Текст под логотипом — увеличен по просьбе */
+.content p {
+  font-size: 1.25rem; /* было 1.125rem */
+  color: #718096; /* средне-серый */
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+/* Контейнер с кнопками */
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+/* Базовая кнопка — увеличили кегль и сделали адаптивным */
+.btn {
+  padding: 18px 20px;
+  font-size: clamp(1rem, 4vw, 1.5rem); /* уменьшается на маленьких экранах */
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Основная кнопка: индиго */
+.btn-primary {
+  background-color: #FFCC33; /* indigo */
+  color: white;
+}
+
+/* Ховер эффект для основной кнопки */
+.btn-primary:hover {
+  background-color: #FFCC33;
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+
